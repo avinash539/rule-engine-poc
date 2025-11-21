@@ -3,7 +3,7 @@
     "partners": [
         {
             "partner_code": "DHL",
-            "is_serviceable": true
+            "is_serviceable": false
         },
         {
             "partner_code": "Shreemaruti",
