@@ -68,7 +68,9 @@
                 "y": 100
             },
             "name": "Select Best Partner",
-            "content": "const handler = (input) => {\n  console.log('Function Input:', JSON.stringify(input));\n  const priorities = input.priority_list || [];\n  const partners = input.partners || [];\n\n  // Filter serviceable partners\n  const serviceableMap = {};\n  partners.forEach(p => {\n    if (p.is_serviceable) {\n      serviceableMap[p.partner_code] = p;\n    }\n  });\n\n  // Find first priority that is serviceable\n  let selected = null;\n  let reason = 'No suitable partner found';\n\n  for (const item of priorities) {\n    // item is now an object: { partner_code, priority, id }\n    if (serviceableMap[item.partner_code]) {\n      selected = item;\n      reason = 'Selected based on user priority: ' + item.partner_code + ' (Priority ' + item.priority + ')';\n      break;\n    }\n  }\n\n  return {\n    selected_partner: selected,\n    reason: reason\n  };\n}"
+            "content": {
+                "source": "export const handler = (input) => {\n  console.log('Function Input:', JSON.stringify(input));\n  const priorities = input.priority_list || [];\n  const partners = input.partners || [];\n\n  // Filter serviceable partners\n  const serviceableMap = {};\n  partners.forEach(p => {\n    if (p.is_serviceable) {\n      serviceableMap[p.partner_code] = p;\n    }\n  });\n\n  // Find first priority that is serviceable\n  let selected = null;\n  let reason = 'No suitable partner found';\n\n  for (const item of priorities) {\n    // item is now an object: { partner_code, priority, id }\n    if (serviceableMap[item.partner_code]) {\n      selected = item;\n      reason = 'Selected based on user priority: ' + item.partner_code + ' (Priority ' + item.priority + ')';\n      break;\n    }\n  }\n\n  return {\n    selected_partner: selected,\n    reason: reason\n  };\n}"
+            }
         },
         {
             "id": "output-node",
