@@ -1,0 +1,47 @@
+{
+    "contentType": "application/vnd.gorules.decision",
+    "nodes": [
+        {
+            "id": "input-node",
+            "type": "inputNode",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "name": "Request"
+        },
+        {
+            "id": "function-node",
+            "type": "functionNode",
+            "position": {
+                "x": 400,
+                "y": 100
+            },
+            "name": "Select Cheapest Partner",
+            "content": "const handler = (input) => {\n  const partners = input.partners || [];\n\n  // Filter serviceable partners\n  const serviceable = partners.filter(p => p.is_serviceable);\n\n  if (serviceable.length === 0) {\n    return {\n      selected_partner: null,\n      reason: 'No serviceable partners found'\n    };\n  }\n\n  // Sort by Rate (ascending)\n  serviceable.sort((a, b) => a.rate - b.rate);\n\n  const best = serviceable[0];\n\n  return {\n    selected_partner: best,\n    reason: 'Cheapest partner selected (Rate: ' + best.rate + ')'\n  };\n}"
+        },
+        {
+            "id": "output-node",
+            "type": "outputNode",
+            "position": {
+                "x": 700,
+                "y": 100
+            },
+            "name": "Response"
+        }
+    ],
+    "edges": [
+        {
+            "id": "edge-1",
+            "sourceId": "input-node",
+            "targetId": "function-node",
+            "type": "edge"
+        },
+        {
+            "id": "edge-2",
+            "sourceId": "function-node",
+            "targetId": "output-node",
+            "type": "edge"
+        }
+    ]
+}

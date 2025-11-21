@@ -1,0 +1,19 @@
+{
+    "partners": [
+        {
+            "partner_code": "Shreemaruti",
+            "rate": 120,
+            "is_serviceable": true
+        },
+        {
+            "partner_code": "DHL",
+            "rate": 100,
+            "is_serviceable": true
+        },
+        {
+            "partner_code": "India Post",
+            "rate": 50,
+            "is_serviceable": true
+        }
+    ]
+}

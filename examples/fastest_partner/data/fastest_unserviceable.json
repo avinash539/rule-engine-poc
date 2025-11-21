@@ -1,0 +1,19 @@
+{
+    "partners": [
+        {
+            "partner_code": "Shreemaruti",
+            "tat": 48,
+            "is_serviceable": true
+        },
+        {
+            "partner_code": "DHL",
+            "tat": 24,
+            "is_serviceable": false
+        },
+        {
+            "partner_code": "India Post",
+            "tat": 72,
+            "is_serviceable": true
+        }
+    ]
+}
