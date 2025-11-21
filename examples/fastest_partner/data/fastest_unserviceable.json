@@ -1,4 +1,10 @@
 {
+    "tenant_id": "tenant_a",
+    "user_id": "user_2",
+    "order": {
+        "order_id": "ORD002",
+        "weight": 1.2
+    },
     "partners": [
         {
             "partner_code": "Shreemaruti",
