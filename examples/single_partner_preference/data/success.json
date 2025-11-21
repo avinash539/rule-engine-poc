@@ -1,0 +1,52 @@
+{
+    "order": {
+        "orderId": "2510291306123P8OH3",
+        "referenceId": "381794331",
+        "parcelCategory": "CARGO",
+        "orderDate": "2025-10-29T13:06:10.210Z",
+        "deliveryMode": "SURFACE",
+        "serviceType": "STANDARD",
+        "orderStatus": "CONFIRMED",
+        "addresses": [
+            {
+                "type": "DELIVERY",
+                "zip": "562107",
+                "city": "BANGALORE",
+                "state": "KARNATAKA",
+                "country": "India"
+            },
+            {
+                "type": "PICKUP",
+                "zip": "122001",
+                "city": "ARJUN NAGAR",
+                "state": "HARYANA",
+                "country": "India"
+            }
+        ],
+        "parentShipment": {
+            "volumetricWeight": "45",
+            "items": [
+                {
+                    "weight": "45"
+                }
+            ]
+        }
+    },
+    "partners": [
+        {
+            "partner_code": "DHL",
+            "partner_name": "DHL",
+            "is_serviceable": true
+        },
+        {
+            "partner_code": "Shreemaruti",
+            "partner_name": "Shreemaruti",
+            "is_serviceable": true
+        },
+        {
+            "partner_code": "Delhivery",
+            "partner_name": "Delhivery",
+            "is_serviceable": true
+        }
+    ]
+}

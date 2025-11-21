@@ -1,0 +1,97 @@
+{
+    "contentType": "application/vnd.gorules.decision",
+    "nodes": [
+        {
+            "id": "input-node",
+            "type": "inputNode",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "name": "Request"
+        },
+        {
+            "id": "decision-table-node",
+            "type": "decisionTableNode",
+            "position": {
+                "x": 400,
+                "y": 100
+            },
+            "name": "Partner Preference",
+            "content": {
+                "hitPolicy": "first",
+                "inputs": [
+                    {
+                        "id": "input-tenant",
+                        "name": "Tenant ID",
+                        "field": "tenant_id",
+                        "type": "expression"
+                    },
+                    {
+                        "id": "input-user",
+                        "name": "User ID",
+                        "field": "user_id",
+                        "type": "expression"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "id": "output-partners",
+                        "name": "Preferred Partners",
+                        "field": "preferred_partners",
+                        "type": "expression"
+                    }
+                ],
+                "rules": [
+                    {
+                        "_id": "rule-1",
+                        "input-tenant": "tenant_id == 'tenant_a'",
+                        "input-user": "user_id == 'user_1'",
+                        "output-partners": "['Shreemaruti', 'DHL', 'India Post']"
+                    },
+                    {
+                        "_id": "rule-2",
+                        "input-tenant": "tenant_id == 'tenant_a'",
+                        "input-user": "",
+                        "output-partners": "['DHL', 'BlueDart']"
+                    },
+                    {
+                        "_id": "rule-3",
+                        "input-tenant": "tenant_id == 'tenant_b'",
+                        "input-user": "",
+                        "output-partners": "['Delhivery']"
+                    },
+                    {
+                        "_id": "rule-fallback",
+                        "input-tenant": "",
+                        "input-user": "",
+                        "output-partners": "[]"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "output-node",
+            "type": "outputNode",
+            "position": {
+                "x": 700,
+                "y": 100
+            },
+            "name": "Response"
+        }
+    ],
+    "edges": [
+        {
+            "id": "edge-1",
+            "sourceId": "input-node",
+            "targetId": "decision-table-node",
+            "type": "edge"
+        },
+        {
+            "id": "edge-2",
+            "sourceId": "decision-table-node",
+            "targetId": "output-node",
+            "type": "edge"
+        }
+    ]
+}

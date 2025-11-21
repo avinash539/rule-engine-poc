@@ -1,0 +1,85 @@
+{
+    "contentType": "application/vnd.gorules.decision",
+    "nodes": [
+        {
+            "id": "input-node",
+            "type": "inputNode",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "name": "Request"
+        },
+        {
+            "id": "decision-table-node",
+            "type": "decisionTableNode",
+            "position": {
+                "x": 400,
+                "y": 100
+            },
+            "name": "Partner Selection",
+            "content": {
+                "hitPolicy": "first",
+                "inputs": [
+                    {
+                        "id": "input-serviceability",
+                        "name": "Is Shreemaruti Available?",
+                        "field": "partners",
+                        "type": "expression"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "id": "output-partner",
+                        "name": "Selected Partner",
+                        "field": "selected_partner",
+                        "type": "expression"
+                    },
+                    {
+                        "id": "output-reason",
+                        "name": "Reason",
+                        "field": "reason",
+                        "type": "expression"
+                    }
+                ],
+                "rules": [
+                    {
+                        "_id": "rule-1",
+                        "input-serviceability": "some(partners, #.partner_code == 'Shreemaruti' and #.is_serviceable == true)",
+                        "output-partner": "'Shreemaruti'",
+                        "output-reason": "'Customer preference: Shreemaruti'"
+                    },
+                    {
+                        "_id": "rule-fallback",
+                        "input-serviceability": "",
+                        "output-partner": "null",
+                        "output-reason": "'Shreemaruti not available'"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "output-node",
+            "type": "outputNode",
+            "position": {
+                "x": 700,
+                "y": 100
+            },
+            "name": "Response"
+        }
+    ],
+    "edges": [
+        {
+            "id": "edge-1",
+            "sourceId": "input-node",
+            "targetId": "decision-table-node",
+            "type": "edge"
+        },
+        {
+            "id": "edge-2",
+            "sourceId": "decision-table-node",
+            "targetId": "output-node",
+            "type": "edge"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "tenant_id": "tenant_a",
+    "user_id": "user_99",
+    "order": {
+        "id": "ORD-102"
+    }
+}

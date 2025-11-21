@@ -1,0 +1,17 @@
+{
+    "user_id": "user_1",
+    "partners": [
+        {
+            "partner_code": "DHL",
+            "is_serviceable": true
+        },
+        {
+            "partner_code": "Shreemaruti",
+            "is_serviceable": false
+        },
+        {
+            "partner_code": "India Post",
+            "is_serviceable": true
+        }
+    ]
+}
