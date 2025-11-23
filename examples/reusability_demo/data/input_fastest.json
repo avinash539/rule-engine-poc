@@ -1,0 +1,26 @@
+{
+    "preference": "fastest",
+    "partners": [
+        {
+            "id": "p1",
+            "name": "Partner A",
+            "tat": 5,
+            "rate": 100,
+            "is_serviceable": true
+        },
+        {
+            "id": "p2",
+            "name": "Partner B",
+            "tat": 2,
+            "rate": 200,
+            "is_serviceable": true
+        },
+        {
+            "id": "p3",
+            "name": "Partner C",
+            "tat": 10,
+            "rate": 50,
+            "is_serviceable": true
+        }
+    ]
+}

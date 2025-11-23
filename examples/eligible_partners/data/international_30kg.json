@@ -1,0 +1,35 @@
+{
+    "tenant_id": "tenant_a",
+    "user_id": "user_4",
+    "order": {
+        "order_id": "ORD004",
+        "parcel_category": "international",
+        "weight": 30
+    },
+    "partners": [
+        {
+            "partner_code": "Shreemaruti",
+            "name": "Shreemaruti Courier"
+        },
+        {
+            "partner_code": "Porter",
+            "name": "Porter Hyperlocal"
+        },
+        {
+            "partner_code": "Bigship",
+            "name": "Bigship Cargo"
+        },
+        {
+            "partner_code": "DHL",
+            "name": "DHL International"
+        },
+        {
+            "partner_code": "Fedex",
+            "name": "Fedex Express"
+        },
+        {
+            "partner_code": "Aramax",
+            "name": "Aramax International"
+        }
+    ]
+}

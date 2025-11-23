@@ -140,12 +140,12 @@ function App() {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden', color: '#333', background: 'white' }}>
       {/* Sidebar */}
       <div style={{ width: '250px', borderRight: '1px solid #ccc', display: 'flex', flexDirection: 'column', background: '#f5f5f5' }}>
         <div style={{ padding: '15px', borderBottom: '1px solid #ddd', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h3 style={{ margin: 0 }}>JDM Rules</h3>
-          <button onClick={createRule} style={{ padding: '4px 8px', cursor: 'pointer' }}>+</button>
+          <h3 style={{ margin: 0, color: '#333' }}>JDM Rules</h3>
+          <button onClick={createRule} style={{ padding: '4px 8px', cursor: 'pointer', background: '#333', color: 'white', border: 'none' }}>+</button>
         </div>
         <div style={{ flex: 1, overflowY: 'auto', padding: '10px' }}>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -158,7 +158,8 @@ function App() {
                   background: selectedRule === rule.path ? '#e0e0e0' : 'white',
                   borderRadius: '4px',
                   marginBottom: '8px',
-                  border: '1px solid #ddd'
+                  border: '1px solid #ddd',
+                  color: '#333'
                 }}
                 onClick={() => loadRule(rule.path)}
               >
@@ -171,7 +172,7 @@ function App() {
 
       {/* Main Editor */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div style={{ padding: '10px', borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'white' }}>
+        <div style={{ padding: '10px', borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'white', color: '#333' }}>
           <span style={{ fontWeight: 'bold' }}>{selectedRule || 'Select a rule'}</span>
           <div>
             <button onClick={() => setShowSimulation(!showSimulation)} disabled={!selectedRule} style={{ padding: '8px 15px', cursor: 'pointer', marginRight: '10px', background: '#28a745', color: 'white', border: 'none', borderRadius: '4px', opacity: !selectedRule ? 0.5 : 1 }}>
@@ -205,15 +206,15 @@ function App() {
 
           {/* Simulation Panel */}
           {showSimulation && (
-            <div style={{ width: '350px', borderLeft: '1px solid #ccc', display: 'flex', flexDirection: 'column', background: 'white', padding: '10px', overflowY: 'auto' }}>
-              <h4>Simulation Input (JSON)</h4>
+            <div style={{ width: '350px', borderLeft: '1px solid #ccc', display: 'flex', flexDirection: 'column', background: 'white', padding: '10px', overflowY: 'auto', color: '#333' }}>
+              <h4 style={{ marginTop: 0 }}>Simulation Input (JSON)</h4>
               {testDataFiles.length > 0 && (
                 <div style={{ marginBottom: '10px' }}>
-                  <label style={{ display: 'block', marginBottom: '5px', fontSize: '12px' }}>Load Test Data:</label>
+                  <label style={{ display: 'block', marginBottom: '5px', fontSize: '12px', color: '#555' }}>Load Test Data:</label>
                   <select
                     value={selectedTestData}
                     onChange={(e) => fetchTestDataContent(selectedRule, e.target.value)}
-                    style={{ width: '100%', padding: '5px' }}
+                    style={{ width: '100%', padding: '5px', background: 'white', color: '#333', border: '1px solid #ccc' }}
                   >
                     {testDataFiles.map(f => (
                       <option key={f} value={f}>{f}</option>
@@ -224,14 +225,14 @@ function App() {
               <textarea
                 value={simulationInput}
                 onChange={(e) => setSimulationInput(e.target.value)}
-                style={{ width: '100%', height: '200px', fontFamily: 'monospace', marginBottom: '10px' }}
+                style={{ width: '100%', height: '200px', fontFamily: 'monospace', marginBottom: '10px', background: 'white', color: '#333', border: '1px solid #ccc', padding: '5px' }}
               />
               <button onClick={runSimulation} style={{ padding: '8px', background: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginBottom: '10px' }}>
                 Run Simulation
               </button>
 
-              <h4>Result</h4>
-              <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '4px', overflowX: 'auto', fontSize: '12px' }}>
+              <h4 style={{ marginTop: '10px' }}>Result</h4>
+              <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '4px', overflowX: 'auto', fontSize: '12px', color: '#333', border: '1px solid #eee' }}>
                 {simulationResult ? JSON.stringify(simulationResult, null, 2) : 'No result yet'}
               </pre>
             </div>

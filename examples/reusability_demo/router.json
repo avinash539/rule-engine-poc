@@ -1,0 +1,117 @@
+{
+    "contentType": "application/vnd.gorules.decision",
+    "nodes": [
+        {
+            "id": "input",
+            "type": "inputNode",
+            "name": "Request",
+            "position": {
+                "x": 100,
+                "y": 200
+            }
+        },
+        {
+            "id": "switch",
+            "type": "switchNode",
+            "name": "Check Preference",
+            "position": {
+                "x": 400,
+                "y": 200
+            },
+            "content": {
+                "hitPolicy": "first",
+                "statements": [
+                    {
+                        "id": "s1",
+                        "condition": "preference == 'fastest'",
+                        "isDefault": false
+                    },
+                    {
+                        "id": "s2",
+                        "condition": "preference == 'cheapest'",
+                        "isDefault": false
+                    },
+                    {
+                        "id": "s3",
+                        "condition": "",
+                        "isDefault": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": "fastest",
+            "type": "decisionNode",
+            "name": "Select Fastest",
+            "position": {
+                "x": 700,
+                "y": 100
+            },
+            "content": {
+                "key": "fastest.json"
+            }
+        },
+        {
+            "id": "cheapest",
+            "type": "decisionNode",
+            "name": "Select Cheapest",
+            "position": {
+                "x": 700,
+                "y": 300
+            },
+            "content": {
+                "key": "cheapest.json"
+            }
+        },
+        {
+            "id": "output",
+            "type": "outputNode",
+            "name": "Response",
+            "position": {
+                "x": 1000,
+                "y": 200
+            }
+        }
+    ],
+    "edges": [
+        {
+            "id": "e1",
+            "sourceId": "input",
+            "targetId": "switch",
+            "type": "edge"
+        },
+        {
+            "id": "e2",
+            "sourceId": "switch",
+            "targetId": "fastest",
+            "sourceHandle": "s1",
+            "type": "edge"
+        },
+        {
+            "id": "e3",
+            "sourceId": "switch",
+            "targetId": "cheapest",
+            "sourceHandle": "s2",
+            "type": "edge"
+        },
+        {
+            "id": "e4",
+            "sourceId": "switch",
+            "targetId": "fastest",
+            "sourceHandle": "s3",
+            "type": "edge"
+        },
+        {
+            "id": "e5",
+            "sourceId": "fastest",
+            "targetId": "output",
+            "type": "edge"
+        },
+        {
+            "id": "e6",
+            "sourceId": "cheapest",
+            "targetId": "output",
+            "type": "edge"
+        }
+    ]
+}

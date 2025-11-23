@@ -1,0 +1,31 @@
+{
+    "tenant_id": "tenant_a",
+    "user_id": "user_6",
+    "order": {
+        "order_id": "ORD006",
+        "parcel_category": "courier",
+        "weight": 60
+    },
+    "partners": [
+        {
+            "partner_code": "Shreemaruti",
+            "name": "Shreemaruti Courier"
+        },
+        {
+            "partner_code": "Porter",
+            "name": "Porter Hyperlocal"
+        },
+        {
+            "partner_code": "Bigship",
+            "name": "Bigship Cargo"
+        },
+        {
+            "partner_code": "Expressbees",
+            "name": "Expressbees Cargo"
+        },
+        {
+            "partner_code": "DHL",
+            "name": "DHL International"
+        }
+    ]
+}

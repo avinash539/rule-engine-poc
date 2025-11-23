@@ -1,0 +1,49 @@
+{
+    "contentType": "application/vnd.gorules.decision",
+    "nodes": [
+        {
+            "id": "input-node",
+            "type": "inputNode",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "name": "Request"
+        },
+        {
+            "id": "function-node",
+            "type": "functionNode",
+            "position": {
+                "x": 400,
+                "y": 100
+            },
+            "name": "Filter Eligible Partners",
+            "content": {
+                "source": "export const handler = (input) => {\n  const order = input.order || {};\n  const parcel_category = order.parcel_category;\n  const weight = order.weight || 0;\n  const partners = input.partners || [];\n\n  const eligible = [];\n\n  for (const partner of partners) {\n    const code = partner.partner_code;\n    let isEligible = false;\n\n    // Shreemaruti: ecomm and courier, weight < 50kg\n    if (code === 'Shreemaruti') {\n      if ((parcel_category === 'ecomm' || parcel_category === 'courier') && weight < 50) {\n        isEligible = true;\n      }\n    }\n    // Porter: hyperlocal, weight < 20kg\n    else if (code === 'Porter') {\n      if (parcel_category === 'hyperlocal' && weight < 20) {\n        isEligible = true;\n      }\n    }\n    // Bigship: cargo, weight > 30kg and < 150kg\n    else if (code === 'Bigship') {\n      if (parcel_category === 'cargo' && weight > 30 && weight < 150) {\n        isEligible = true;\n      }\n    }\n    // Expressbees: cargo, weight > 50kg and < 550kg\n    else if (code === 'Expressbees') {\n      if (parcel_category === 'cargo' && weight > 50 && weight < 550) {\n        isEligible = true;\n      }\n    }\n    // DHL, Fedex, Aramax: international\n    else if (code === 'DHL' || code === 'Fedex' || code === 'Aramax') {\n      if (parcel_category === 'international') {\n        isEligible = true;\n      }\n    }\n\n    if (isEligible) {\n      eligible.push(partner);\n    }\n  }\n\n  return {\n    eligible_partners: eligible,\n    total_eligible: eligible.length,\n    order_details: {\n      parcel_category: parcel_category,\n      weight: weight\n    }\n  };\n}"
+            }
+        },
+        {
+            "id": "output-node",
+            "type": "outputNode",
+            "position": {
+                "x": 700,
+                "y": 100
+            },
+            "name": "Response"
+        }
+    ],
+    "edges": [
+        {
+            "id": "edge-1",
+            "sourceId": "input-node",
+            "targetId": "function-node",
+            "type": "edge"
+        },
+        {
+            "id": "edge-2",
+            "sourceId": "function-node",
+            "targetId": "output-node",
+            "type": "edge"
+        }
+    ]
+}

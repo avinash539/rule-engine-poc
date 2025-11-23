@@ -1,0 +1,1 @@
+uv run python jdm-editor/backend/main.py
